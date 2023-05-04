@@ -8,12 +8,11 @@ import { User } from './entity/User';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
-  }
+  // getHello(): string {
+  //   return 'Hello World!..';
+  // }
 
   constructor(
-    private readonly logger: Logger,
     @InjectRepository(User)
     private usersRepository: Repository<User>,
     @InjectRepository(Post)
@@ -35,11 +34,11 @@ export class AppService {
       ],
       select: [
         'id',
-        'name',
-        'displayOrder',
-        'post.id',
-        'post.title',
-        'post.description',
+        'firstName',
+        'lastName',
+        'posts.id',
+        'posts.title',
+        'posts.description',
       ],
     });
   }
@@ -57,8 +56,7 @@ export class AppService {
         'title',
         'description',
         'postReplys.id',
-        'postReplys.name',
-        'postReplys.displayOrder',
+        'postReplys.title',
       ],
     });
   }
@@ -72,7 +70,7 @@ export class AppService {
     return paginate(query, this.postReplysRepository, {
       relations: ['post'],
       sortableColumns: ['id', 'title'],
-      select: ['id', 'titile'],
+      select: ['id', 'title'],
       searchableColumns: ['id', 'title'],
     });
   }
