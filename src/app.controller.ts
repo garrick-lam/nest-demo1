@@ -7,25 +7,20 @@ import { PostReply } from './entity/PostReply';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
+  constructor(private readonly appService: AppService) { }
 
   @Get('/users')
-  findUsers(@Paginate() query: PaginateQuery):  Promise<Paginated<User>> {
+  findUsers(@Paginate() query: PaginateQuery): Promise<Paginated<User>> {
     return this.appService.findUsers(query);
   }
-  
+
   @Get('/posts')
-  findPosts(@Paginate() query: PaginateQuery):  Promise<Paginated<Post>> {
+  findPosts(@Paginate() query: PaginateQuery): Promise<Paginated<Post>> {
     return this.appService.findPosts(query);
   }
-  
+
   @Get('/postReplys')
-  findPostReplys(@Paginate() query: PaginateQuery):  Promise<Paginated<PostReply>> {
+  findPostReplys(@Paginate() query: PaginateQuery): Promise<Paginated<PostReply>> {
     return this.appService.findPostReplys(query);
   }
 }

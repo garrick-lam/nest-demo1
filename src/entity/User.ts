@@ -15,7 +15,7 @@ export class User {
 
     @Column()
     age: number
-    
+
     @OneToMany(() => Post, (post) => post.user)
     posts: Post[]
 

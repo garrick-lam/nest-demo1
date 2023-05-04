@@ -8,9 +8,6 @@ import { User } from './entity/User';
 
 @Injectable()
 export class AppService {
-  // getHello(): string {
-  //   return 'Hello World!..';
-  // }
 
   constructor(
     @InjectRepository(User)
@@ -24,7 +21,7 @@ export class AppService {
   findUsers(query: PaginateQuery): Promise<Paginated<User>> {
     return paginate(query, this.usersRepository, {
       relations: ['posts'],
-      sortableColumns: ['id', 'firstName', 'lastName'],
+      sortableColumns: ['id', 'firstName', 'lastName', 'posts.id'],
       defaultSortBy: [
         ['firstName', 'ASC'],
         ['lastName', 'ASC'],
@@ -39,6 +36,7 @@ export class AppService {
         'posts.id',
         'posts.title',
         'posts.description',
+        // 'posts.postReplys.title',
       ],
     });
   }
