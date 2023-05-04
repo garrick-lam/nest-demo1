@@ -30,7 +30,7 @@ CREATE TABLE `post` (
   PRIMARY KEY (`id`),
   KEY `FK_5c1cf55c308037b5aca1038a131` (`userId`),
   CONSTRAINT `FK_5c1cf55c308037b5aca1038a131` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `post` (
 
 LOCK TABLES `post` WRITE;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
-INSERT INTO `post` VALUES (8,'Post1 Title','Post1 bbb',14),(9,'Post2 Title','Post2 zzz',14),(10,'Post3 Title','Post3 fff',15);
+INSERT INTO `post` VALUES (1,'Post1 Title','Post4 zz',15),(8,'Post1 Title','Post1 bbb',14),(9,'Post2 Title','Post2 zzz',14),(10,'Post3 Title','Post3 fff',15),(11,'Post4','',16),(12,'Post5','',17),(13,'Post6','',18),(14,'Post7','',19),(15,'Post8','',20),(16,'Post9','',21),(17,'Post10','',22);
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `post_reply` (
   PRIMARY KEY (`id`),
   KEY `FK_02ed2f0b5c847809c651d8928d0` (`postId`),
   CONSTRAINT `FK_02ed2f0b5c847809c651d8928d0` FOREIGN KEY (`postId`) REFERENCES `post` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `post_reply` (
 
 LOCK TABLES `post_reply` WRITE;
 /*!40000 ALTER TABLE `post_reply` DISABLE KEYS */;
-INSERT INTO `post_reply` VALUES (1,'p1r1',8),(2,'p1r2',8),(3,'p2r1',9),(4,'p2r2',9),(5,'p3r1',10),(6,'p3r2',10);
+INSERT INTO `post_reply` VALUES (1,'aaa',8),(2,'jjj',8),(3,'nnn',9),(4,'hhh',9),(5,'bbb',10),(6,'iii',10),(7,'fff',11),(8,'ggg',12),(9,'ddd',13),(10,'eee',14),(11,'kkk',15),(12,'ccc',16),(13,'mmm',17);
 /*!40000 ALTER TABLE `post_reply` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +83,7 @@ CREATE TABLE `user` (
   `lastName` varchar(255) NOT NULL,
   `age` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (14,'User1','u1',1),(15,'User2','u2',2),(16,'User3','u3',3);
+INSERT INTO `user` VALUES (14,'User1','u1',1),(15,'User2','u2',3),(16,'User3','u3',5),(17,'User4','u4',7),(18,'User5','u5',9),(19,'User6','u6',2),(20,'User7','u7',4),(21,'User8','u8',6),(22,'User9','u9',8);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-04 11:13:25
+-- Dump completed on 2023-05-04 15:14:44

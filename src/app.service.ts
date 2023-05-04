@@ -20,23 +20,22 @@ export class AppService {
 
   findUsers(query: PaginateQuery): Promise<Paginated<User>> {
     return paginate(query, this.usersRepository, {
-      relations: ['posts'],
-      sortableColumns: ['id', 'firstName', 'lastName', 'posts.id'],
+      relations: { posts: { postReplys: true } },
+      sortableColumns: ['id', 'firstName', 'age', 'lastName', 'posts.id', 'posts.postReplys.title'],
       defaultSortBy: [
         ['firstName', 'ASC'],
         ['lastName', 'ASC'],
         ['id', 'ASC'],
-        ['posts.title', 'ASC'],
-        ['posts.id', 'ASC'],
       ],
       select: [
         'id',
         'firstName',
         'lastName',
+        'age',
         'posts.id',
         'posts.title',
         'posts.description',
-        // 'posts.postReplys.title',
+        'posts.postReplys.title',
       ],
     });
   }
@@ -47,7 +46,7 @@ export class AppService {
 
   findPosts(query: PaginateQuery): Promise<Paginated<Post>> {
     return paginate(query, this.postsRepository, {
-      relations: ['user', 'postReplys'],
+      relations: { user: true, postReplys: true }, //['user', 'postReplys'],
       sortableColumns: ['id', 'title', 'description'],
       select: [
         'id',
@@ -66,7 +65,7 @@ export class AppService {
 
   findPostReplys(query: PaginateQuery): Promise<Paginated<PostReply>> {
     return paginate(query, this.postReplysRepository, {
-      relations: ['post'],
+      relations: { post: true },
       sortableColumns: ['id', 'title'],
       select: ['id', 'title'],
       searchableColumns: ['id', 'title'],
