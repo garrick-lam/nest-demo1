@@ -44,6 +44,33 @@ INSERT INTO `post` VALUES (1,'Post1 Title','Post4 zz',15),(8,'Post1 Title','Post
 UNLOCK TABLES;
 
 --
+-- Table structure for table `post_postreply`
+--
+
+DROP TABLE IF EXISTS `post_postreply`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `post_postreply` (
+  `postReplyId` int(11) NOT NULL,
+  `postId` int(11) NOT NULL,
+  PRIMARY KEY (`postReplyId`,`postId`),
+  KEY `FK_02ed2f0b5c847809c651d8928d1` (`postId`),
+  CONSTRAINT `FK_02ed2f0b5c847809c651d8928d1` FOREIGN KEY (`postId`) REFERENCES `post` (`id`),
+  CONSTRAINT `FK_02ed2f0b5c847809c651d8928d2` FOREIGN KEY (`postReplyId`) REFERENCES `post_reply` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post_postreply`
+--
+
+LOCK TABLES `post_postreply` WRITE;
+/*!40000 ALTER TABLE `post_postreply` DISABLE KEYS */;
+INSERT INTO `post_postreply` VALUES (1,8),(2,8),(3,9),(4,9),(5,10),(6,10),(7,11),(8,12),(9,13),(10,14),(11,15),(12,16),(13,17);
+/*!40000 ALTER TABLE `post_postreply` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `post_reply`
 --
 
@@ -109,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-04 15:14:44
+-- Dump completed on 2023-05-05 10:10:34

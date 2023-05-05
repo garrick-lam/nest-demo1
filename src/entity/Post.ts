@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, ManyToMany, JoinTable } from "typeorm"
 import { User } from "./User"
 import { PostReply } from "./PostReply"
 
@@ -20,6 +20,19 @@ export class Post {
     })
     user: User
 
-    @OneToMany(() => PostReply, (postReply) => postReply.post)
+    // @OneToMany(() => PostReply, (postReply) => postReply.post)
+    // postReplys: PostReply[]
+
+
+    @ManyToMany(() => PostReply)
+    @JoinTable({
+      name: 'post_postreply',
+      joinColumn: {
+        name: 'postId',
+      },
+      inverseJoinColumn: {
+        name: 'postReplyId',
+      },
+    })
     postReplys: PostReply[]
 }
