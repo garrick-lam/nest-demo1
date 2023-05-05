@@ -39,40 +39,4 @@ export class AppService {
       ],
     });
   }
-
-  findUser(id: number): Promise<User> {
-    return this.usersRepository.findOneOrFail({ where: { id } });
-  }
-
-  findPosts(query: PaginateQuery): Promise<Paginated<Post>> {
-    return paginate(query, this.postsRepository, {
-      relations: { user: true, postReplys: true }, //['user', 'postReplys'],
-      sortableColumns: ['id', 'title', 'description'],
-      select: [
-        'id',
-        'title',
-        'description',
-        'postReplys.id',
-        'postReplys.title',
-      ],
-    });
-  }
-
-  findGroup(id: number): Promise<Post> {
-    return this.postsRepository.findOneOrFail({ where: { id } });
-  }
-
-
-  findPostReplys(query: PaginateQuery): Promise<Paginated<PostReply>> {
-    return paginate(query, this.postReplysRepository, {
-      relations: { post: true },
-      sortableColumns: ['id', 'title'],
-      select: ['id', 'title'],
-      searchableColumns: ['id', 'title'],
-    });
-  }
-
-  findPostReply(id: number): Promise<PostReply> {
-    return this.postReplysRepository.findOneOrFail({ where: { id } });
-  }
 }

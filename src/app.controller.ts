@@ -13,16 +13,4 @@ export class AppController {
   findUsers(@Paginate() query: PaginateQuery): Promise<Paginated<User>> {
     return this.appService.findUsers(query);
   }
-
-  // http://localhost:3000/users?limit=30&sortBy=posts.postReplys.title:ASC
-
-  @Get('/posts')
-  findPosts(@Paginate() query: PaginateQuery): Promise<Paginated<Post>> {
-    return this.appService.findPosts(query);
-  }
-
-  @Get('/postReplys')
-  findPostReplys(@Paginate() query: PaginateQuery): Promise<Paginated<PostReply>> {
-    return this.appService.findPostReplys(query);
-  }
 }
